@@ -1,0 +1,15 @@
+file_name = input("Введіть назву нового файлу: ") + ".txt"
+lines = []
+print("Введіть текст (порожній рядок — завершення):")
+while True:
+    line = input()
+    if line == "":
+        break
+    lines.append(line)
+
+with open(file_name, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines))
+
+print("Вміст файлу:")
+with open(file_name, "r", encoding="utf-8") as f:
+    print(f.read())
