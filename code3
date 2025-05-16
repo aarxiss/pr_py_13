@@ -1,0 +1,29 @@
+def replace_in_file(original_file, search_text, replace_text):
+    try:
+        # Зчитуємо вміст оригінального файлу
+        with open(original_file, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # Замінюємо всі входження шуканого слова або фрази
+        modified_content = content.replace(search_text, replace_text)
+
+        # Генеруємо нову назву файлу
+        new_file = "modified_" + original_file
+
+        # Записуємо змінений текст у новий файл
+        with open(new_file, "w", encoding="utf-8") as f:
+            f.write(modified_content)
+
+        print(f"\n✔️ Заміна завершена. Результат збережено у файл: {new_file}")
+
+    except FileNotFoundError:
+        print("❌ Помилка: файл не знайдено.")
+    except Exception as e:
+        print(f"❌ Невідома помилка: {e}")
+
+# --- Основна частина програми ---
+file_name = input("Введіть назву текстового файлу: ")
+search = input("Введіть слово або фразу для пошуку: ")
+replace = input("Введіть слово або фразу для заміни: ")
+
+replace_in_file(file_name, search, replace)
